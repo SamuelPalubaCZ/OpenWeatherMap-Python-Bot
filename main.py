@@ -2,7 +2,7 @@ import requests
 import json
 
 
-def weather_for_city(city,api):
+def weather_for_city(city,api, info="full"):
   #url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + api
   #print(url)
   #response = requests.get(url)
@@ -10,6 +10,7 @@ def weather_for_city(city,api):
     with open("data.json") as data:
       return data.read()
   #print(nacti())
+
   
   data = json.loads(nacti())
   #raw data
@@ -25,13 +26,13 @@ def weather_for_city(city,api):
   weather_full_wind_speed = 'Wind speed:', data['wind']['speed'], 'm/s'
   weather_full_sky_condition = 'Sky condition:', data['weather'][0]['description']
 
-  print("raw data")
+if info == "raw":
   print(weather_raw_tempature)
   print(weather_raw_humidity)
   print(weather_raw_wind_speed)
   print(weather_raw_sky_condition)
   print(weather_raw_city)
-  print("full data")
+elif info == "full":
   print(weather_full_city)
   print(weather_full_tempature)
   print(weather_full_humidity)
