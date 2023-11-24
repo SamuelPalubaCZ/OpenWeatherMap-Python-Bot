@@ -21,26 +21,29 @@ def weather_for_city(city,api, info="full"):
   weather_raw_sky_condition = data['weather'][0]['description']
   #full data
   weather_full_city = '**Weather for {}**'.format(data['name'])
-  weather_full_tempature = 'Temperature:', data['main']['temp'], 'degrees Celsius'
-  weather_full_humidity = 'Humidity:', data['main']['humidity'], '%'
-  weather_full_wind_speed = 'Wind speed:', data['wind']['speed'], 'm/s'
-  weather_full_sky_condition = 'Sky condition:', data['weather'][0]['description']
+  weather_full_tempature = 'Temperature: ' + str(data['main']['temp']) + ' degrees Celsius'
+  weather_full_humidity = 'Humidity: ' + str(data['main']['humidity']) + '%'
+  weather_full_wind_speed = 'Wind speed: ' + str(data['wind']['speed']) + ' m/s'
+  weather_full_sky_condition = 'Sky condition: ' + (data['weather'])[0]['description']
 
-if info == "raw":
-  print(weather_raw_tempature)
-  print(weather_raw_humidity)
-  print(weather_raw_wind_speed)
-  print(weather_raw_sky_condition)
-  print(weather_raw_city)
-elif info == "full":
-  print(weather_full_city)
-  print(weather_full_tempature)
-  print(weather_full_humidity)
-  print(weather_full_wind_speed)
-  print(weather_full_sky_condition)
+  if info == "raw":
+    print()
+    print(weather_raw_tempature)
+    print(weather_raw_humidity)
+    print(weather_raw_wind_speed)
+    print(weather_raw_sky_condition)
+    print(weather_raw_city)
+  elif info == "full":
+    print(weather_full_city)
+    print(weather_full_tempature)
+    print(weather_full_humidity)
+    print(weather_full_wind_speed)
+    print(weather_full_sky_condition)
     
 
 
 
 
-weather_for_city("Berlin","4e4e25da3c76c95c7c348925a7e2310a")
+weather_for_city("Berlin","4e4e25da3c76c95c7c348925a7e2310a","raw")
+print("\n ANKAP \n")
+weather_for_city("Berlin","4e4e25da3c76c95c7c348925a7e2310a","full")
