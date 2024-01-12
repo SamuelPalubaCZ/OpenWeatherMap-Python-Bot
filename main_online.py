@@ -1,5 +1,6 @@
 import requests
 import json
+import datetime
 
 
 def weather_for_city(city, api):
@@ -7,11 +8,20 @@ def weather_for_city(city, api):
   response = requests.get(url)
   data = json.loads(response.content)
   # raw data
+
   weather_raw_tempature = data['main']['temp']
+  weather_raw_feel_like = data['main']['feels_like']
+  weather_raw_pressure = data['main']['pressure']
+  weather_raw_tempature_min = data['main']['temp_min']
+  weather_raw_tempature_max = data['main']['temp_max']
   weather_raw_humidity = data['main']['humidity']
   weather_raw_wind_speed = data['wind']['speed']
-  weather_raw_sky_condition = data['weather'][0]['description']
+  weather_raw_sky_condition = data['weather'][0]['main']
+  weather_raw_wind_deg = data['wind']['deg']
+  weather_raw_wind_gust = data['wind']['gust']
+  weather_raw_clouds = data['clouds']['all']
   # full data
+
   weather_full_city = '**Weather for {}**'.format(data['name'])
   weather_full_tempature = 'Temperature:', data['main']['temp'], 'degrees Celsius'
   weather_full_humidity = 'Humidity:', data['main']['humidity'], '%'
@@ -19,10 +29,18 @@ def weather_for_city(city, api):
   weather_full_sky_condition = 'Sky condition:', data['weather'][0]['description']
 
   print(weather_raw_tempature)
+  print(weather_raw_feel_like)
+  print(weather_raw_pressure)
+  print(weather_raw_tempature_min)
+  print(weather_raw_tempature_max)
   print(weather_raw_humidity)
   print(weather_raw_wind_speed)
   print(weather_raw_sky_condition)
-  print(weather_full_city)
+  print(weather_raw_wind_deg)
+  print(weather_raw_wind_gust)
+  print(weather_raw_clouds)
+  
+
 
 
 
