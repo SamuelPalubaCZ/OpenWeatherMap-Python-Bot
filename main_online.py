@@ -6,9 +6,11 @@ import datetime
 def weather_for_city(city, api):
   url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + api
   response = requests.get(url)
+  print (response.content)
+  """
   data = json.loads(response.content)
   # raw data
-
+  """
   weather_raw_tempature = data['main']['temp']
   weather_raw_feel_like = data['main']['feels_like']
   weather_raw_pressure = data['main']['pressure']
@@ -23,10 +25,10 @@ def weather_for_city(city, api):
   # full data
 
   weather_full_city = '**Weather for {}**'.format(data['name'])
-  weather_full_tempature = 'Temperature:', data['main']['temp'], 'degrees Celsius'
-  weather_full_humidity = 'Humidity:', data['main']['humidity'], '%'
-  weather_full_wind_speed = 'Wind speed:', data['wind']['speed'], 'm/s'
-  weather_full_sky_condition = 'Sky condition:', data['weather'][0]['description']
+  weather_full_tempature = 'Temperature: {} degrees Celsius'.format(data['main']['temp'])
+  weather_full_humidity = 'Humidity: {} %'.format(data['main']['humidity'])
+  weather_full_wind_speed = 'Wind speed: {} m/s'.format(data['wind']['speed'])
+  weather_full_sky_condition = 'Sky condition: {}'.format(data['weather'][0]['description'])
 
   print(weather_raw_tempature)
   print(weather_raw_feel_like)

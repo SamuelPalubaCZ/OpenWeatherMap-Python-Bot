@@ -5,3 +5,4 @@
   print('Wind speed:', data['wind']['speed'], 'm/s')
   print('Sky condition:', data['weather'][0]['description'])
 """
+weather.locate("json.json")
